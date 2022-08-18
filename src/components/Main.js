@@ -1,4 +1,5 @@
 import Products from "./Products";
+import { connect } from 'react-redux'
 
 function Main(props) {
   return (
@@ -8,4 +9,11 @@ function Main(props) {
   );
 }
 
-export default Main;
+
+function mapStateToProps(state) {
+  return {
+    products : state.products,
+  }
+}
+
+export default connect(mapStateToProps)(Main);

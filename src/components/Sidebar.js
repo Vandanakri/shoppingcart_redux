@@ -1,5 +1,7 @@
-function Sidebar({ products }) {
-  let sizes = products.reduce((acc, cv) => {
+import { connect } from 'react-redux';
+
+function Sidebar(props) {
+  let sizes = props.products.reduce((acc, cv) => {
     acc = acc.concat(cv.availableSizes);
     return acc;
   }, []);
@@ -15,4 +17,10 @@ function Sidebar({ products }) {
   );
 }
 
-export default Sidebar;
+function mapStateToProps(state) {
+  return {
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps)(Sidebar);
